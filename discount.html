@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>सर्वे भवन्तु सुखिनः | Discount — Arogyam Yog Chikitsa Kendra</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Tiro+Devanagari+Sanskrit&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --sky:#38b6d8;--sky-dark:#1a7fa0;--sky-light:#c8ecf7;
+      --cream:#fdf8f0;--gold:#e8a020;--gold-light:#ffd56b;
+      --lotus:#e080a0;--text:#1a2830;--muted:#4a6878;
+      --green:#2a9d5c;--green-light:#e8f7ef;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    html,body{min-height:100vh;font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;}
+
+    .bg-canvas{position:fixed;inset:0;z-index:0;background:
+      radial-gradient(ellipse 70% 50% at 50% 0%,rgba(56,182,216,.2) 0%,transparent 60%),
+      radial-gradient(ellipse 50% 50% at 0% 100%,rgba(42,157,92,.12) 0%,transparent 60%),
+      radial-gradient(ellipse 60% 40% at 100% 50%,rgba(232,160,32,.1) 0%,transparent 55%),
+      linear-gradient(180deg,#edf9fd 0%,#fdf8f0 60%,#fdf3e8 100%);}
+
+    .particle{position:fixed;border-radius:50%;pointer-events:none;z-index:0;animation:floatP ease-in-out infinite;opacity:0;}
+    @keyframes floatP{0%{opacity:0;transform:translateY(0) scale(.5);}20%{opacity:.25;}80%{opacity:.12;}100%{opacity:0;transform:translateY(-130px) scale(1.3);}}
+
+    .page{position:relative;z-index:1;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:32px 20px;}
+    .card-wrap{width:min(600px,100%);display:flex;flex-direction:column;gap:18px;}
+
+    /* Header */
+    .header{text-align:center;animation:fsd .9s cubic-bezier(.2,.8,.3,1) both;}
+    .logo-ring{width:100px;height:100px;margin:0 auto 12px;animation:logoBreath 5s ease-in-out infinite;}
+    .logo-ring img{width:100%;height:100%;border-radius:50%;object-fit:cover;
+      box-shadow:0 0 0 3px rgba(56,182,216,.45),0 0 0 7px rgba(56,182,216,.1),0 8px 28px rgba(56,182,216,.3);}
+    @keyframes logoBreath{0%,100%{filter:drop-shadow(0 0 8px rgba(56,182,216,.4));}50%{filter:drop-shadow(0 0 20px rgba(56,182,216,.65));}}
+    .sanskrit{font-family:'Tiro Devanagari Sanskrit',serif;font-size:18px;color:var(--sky-dark);letter-spacing:.04em;margin-bottom:4px;}
+    .header h1{font-family:'Cormorant Garamond',serif;font-size:clamp(20px,4.5vw,28px);font-weight:600;line-height:1.2;}
+    .sub-name{font-size:12px;font-weight:300;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-top:4px;}
+
+    /* Card */
+    .card{background:rgba(255,255,255,.92);backdrop-filter:blur(20px);border:1px solid rgba(56,182,216,.2);border-radius:24px;padding:30px 28px;
+      box-shadow:0 4px 6px rgba(26,40,48,.04),0 22px 55px rgba(26,40,48,.1);animation:fsu .8s .2s cubic-bezier(.2,.8,.3,1) both;}
+
+    /* Approval badge */
+    .approval-badge{
+      display:flex;align-items:center;gap:14px;
+      background:linear-gradient(135deg,rgba(42,157,92,.08),rgba(42,157,92,.04));
+      border:1.5px solid rgba(42,157,92,.3);border-radius:18px;
+      padding:18px 20px;margin-bottom:24px;
+      animation:fsu .6s .4s both;
+    }
+    .badge-icon{font-size:36px;flex-shrink:0;animation:pulse 3s ease-in-out infinite;}
+    @keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.1);}}
+    .badge-text h2{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--green);margin-bottom:3px;}
+    .badge-text p{font-size:13px;color:var(--muted);line-height:1.4;}
+
+    /* Discount display */
+    .discount-box{
+      text-align:center;
+      background:linear-gradient(135deg,rgba(232,160,32,.1),rgba(255,213,107,.08));
+      border:1.5px solid rgba(232,160,32,.35);border-radius:18px;
+      padding:28px 20px;margin-bottom:22px;
+      position:relative;overflow:hidden;
+      animation:fsu .6s .5s both;
+    }
+    .discount-box::before{content:'';position:absolute;top:-30px;right:-30px;width:120px;height:120px;
+      border-radius:50%;background:radial-gradient(rgba(232,160,32,.15),transparent);pointer-events:none;}
+    .discount-label{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:8px;}
+    .discount-percent{
+      font-family:'Cormorant Garamond',serif;
+      font-size:clamp(56px,14vw,88px);
+      font-weight:600;line-height:1;
+      background:linear-gradient(135deg,var(--gold),#f5c542);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+      filter:drop-shadow(0 2px 8px rgba(232,160,32,.35));
+    }
+    .discount-off{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--gold);font-weight:600;margin-top:-4px;}
+    .discount-note{font-size:13px;color:var(--muted);margin-top:8px;}
+
+    /* Instructions */
+    .instructions{display:flex;flex-direction:column;gap:10px;margin-bottom:22px;}
+    .inst-item{
+      display:flex;align-items:flex-start;gap:12px;
+      background:rgba(237,249,253,.6);border:1px solid rgba(56,182,216,.2);
+      border-radius:12px;padding:13px 14px;
+      animation:fsu .5s both;
+    }
+    .inst-item:nth-child(1){animation-delay:.5s;}
+    .inst-item:nth-child(2){animation-delay:.6s;}
+    .inst-item:nth-child(3){animation-delay:.7s;}
+    .inst-num{width:26px;height:26px;border-radius:50%;background:var(--sky-dark);color:#fff;font-size:12px;font-weight:700;
+      display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+    .inst-text{font-size:13.5px;color:var(--text);line-height:1.5;}
+    .inst-text strong{color:var(--sky-dark);}
+
+    /* Staff auth box */
+    .auth-box{
+      background:linear-gradient(135deg,rgba(26,127,160,.06),rgba(56,182,216,.04));
+      border:1.5px dashed rgba(56,182,216,.5);border-radius:18px;padding:22px 20px;
+      text-align:center;margin-bottom:22px;animation:fsu .6s .8s both;
+    }
+    .auth-box h3{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--sky-dark);margin-bottom:6px;}
+    .auth-box p{font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.5;}
+    .auth-stamp{
+      display:inline-flex;align-items:center;justify-content:center;
+      width:90px;height:90px;border-radius:50%;
+      border:3px solid rgba(42,157,92,.4);
+      background:radial-gradient(rgba(42,157,92,.08),rgba(42,157,92,.02));
+      flex-direction:column;gap:2px;margin:0 auto 10px;
+      font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);
+      transition:all .3s;cursor:pointer;
+    }
+    .auth-stamp.stamped{border-color:var(--green);background:radial-gradient(rgba(42,157,92,.15),rgba(42,157,92,.05));color:var(--green);}
+    .auth-stamp .stamp-icon{font-size:28px;display:block;}
+    .auth-stamp-label{font-size:12px;color:var(--muted);margin-top:6px;}
+
+    .btn-approve{
+      width:100%;padding:16px;border:none;border-radius:14px;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:500;
+      cursor:pointer;transition:all .3s;letter-spacing:.02em;
+      background:linear-gradient(135deg,var(--green),#3dba74);color:#fff;
+      box-shadow:0 6px 22px rgba(42,157,92,.35);
+    }
+    .btn-approve:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(42,157,92,.45);}
+    .btn-approve:disabled{background:linear-gradient(135deg,#a0c8b8,#b8d8c8);box-shadow:none;cursor:not-allowed;opacity:.6;}
+    .btn-approve.approved{background:linear-gradient(135deg,#1a6e40,var(--green));cursor:default;}
+
+    /* Approved state */
+    .approved-state{display:none;text-align:center;padding:8px;}
+    .approved-state.show{display:block;animation:fsu .6s both;}
+    .approved-state .big-check{font-size:60px;animation:bounceIn .7s both;}
+    .approved-state h3{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--green);margin:10px 0 6px;}
+    .approved-state p{color:var(--muted);font-size:14px;}
+    .approved-time{font-size:12px;color:var(--muted);margin-top:6px;font-style:italic;}
+
+    /* Back btn */
+    .btn-back{
+      display:flex;align-items:center;justify-content:center;gap:8px;
+      width:100%;padding:14px;border:1.5px solid rgba(56,182,216,.35);border-radius:14px;
+      background:rgba(237,249,253,.5);color:var(--sky-dark);font-family:'DM Sans',sans-serif;
+      font-size:14px;font-weight:500;cursor:pointer;text-decoration:none;margin-top:12px;transition:all .25s;
+    }
+    .btn-back:hover{background:rgba(56,182,216,.1);border-color:var(--sky);}
+
+    .note{text-align:center;font-size:12px;color:var(--muted);margin-top:12px;line-height:1.5;}
+
+    @keyframes fsd{from{opacity:0;transform:translateY(-22px);}to{opacity:1;transform:translateY(0);}}
+    @keyframes fsu{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+    @keyframes bounceIn{0%{transform:scale(0) rotate(-15deg);}60%{transform:scale(1.2) rotate(5deg);}100%{transform:scale(1) rotate(0deg);}}
+
+    @media(max-width:520px){.card{padding:22px 18px;}.discount-percent{font-size:clamp(50px,18vw,80px);}}
+  </style>
+</head>
+<body>
+<div class="bg-canvas"></div>
+
+<main class="page">
+<div class="card-wrap">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="logo-ring">
+      <img src="Logo_Arogyam.png" alt="Arogyam Yog Logo" />
+    </div>
+    <div class="sanskrit">॥ सर्वे भवन्तु सुखिनः ॥</div>
+    <h1>Arogyam Yog Chikitsa Kendra</h1>
+    <p class="sub-name">Sikar, Rajasthan — Discount Approval</p>
+  </div>
+
+  <!-- Card -->
+  <div class="card">
+
+    <!-- Approval badge -->
+    <div class="approval-badge">
+      <div class="badge-icon">🎁</div>
+      <div class="badge-text">
+        <h2>Discount Unlocked!</h2>
+        <p>This customer has followed us on Instagram and reviewed us on Google Maps.</p>
+      </div>
+    </div>
+
+    <!-- Discount amount -->
+    <div class="discount-box">
+      <p class="discount-label">Special Offer for You</p>
+      <div class="discount-percent">10%</div>
+      <div class="discount-off">OFF</div>
+      <p class="discount-note">🌿 On all yoga classes & therapy sessions</p>
+    </div>
+
+    <!-- Staff authorization -->
+    <div class="auth-box" id="authBox">
+      <h3>🔐 Staff Authorization</h3>
+      <p>Counter staff: please verify and approve to apply the discount.</p>
+
+      <div class="auth-stamp" id="authStamp" onclick="stampApproval()">
+        <span class="stamp-icon">✅</span>
+        Approve
+      </div>
+      <p class="auth-stamp-label">Click to stamp approval</p>
+
+      <button class="btn-approve" id="approveBtn" onclick="confirmApproval()" disabled>
+        Confirm & Apply Discount
+      </button>
+    </div>
+
+    <!-- Approved success -->
+    <div class="approved-state" id="approvedState">
+      <div class="big-check">✅</div>
+      <h3>Discount Approved!</h3>
+      <p>Please apply 10% discount at the billing counter.</p>
+      <p class="approved-time" id="approvedTime"></p>
+    </div>
+
+    <!-- Instructions -->
+    <p style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--sky-dark);margin-bottom:12px;margin-top:4px;">How it works</p>
+    <div class="instructions">
+      <div class="inst-item">
+        <div class="inst-num">1</div>
+        <div class="inst-text"><strong>Customer shows this page</strong> at the counter after completing both social actions.</div>
+      </div>
+      <div class="inst-item">
+        <div class="inst-num">2</div>
+        <div class="inst-text"><strong>Staff clicks "Approve"</strong> to stamp and confirm the discount eligibility.</div>
+      </div>
+      <div class="inst-item">
+        <div class="inst-num">3</div>
+        <div class="inst-text"><strong>Apply the 10% discount</strong> to the customer's bill. One-time per visit.</div>
+      </div>
+    </div>
+
+    <a href="index.html" class="btn-back">← Back to Main Page</a>
+    <p class="note">🌸 Arogyam Yog Chikitsa Kendra Sikar — Thank you for your support!</p>
+  </div>
+
+</div>
+</main>
+
+<script>
+(function(){
+  // Particles
+  const colors=['#38b6d8','#e8a020','#e080a0','#2a9d5c','#c8ecf7'];
+  for(let i=0;i<16;i++){
+    const p=document.createElement('div');p.className='particle';
+    const s=5+Math.random()*14;
+    p.style.cssText=`width:${s}px;height:${s}px;background:${colors[i%colors.length]};left:${Math.random()*100}%;bottom:${Math.random()*40}%;animation-duration:${7+Math.random()*10}s;animation-delay:${Math.random()*9}s;`;
+    document.body.appendChild(p);
+  }
+})();
+
+let stamped = false;
+
+function stampApproval(){
+  if(stamped) return;
+  stamped = true;
+  const stamp = document.getElementById('authStamp');
+  const btn   = document.getElementById('approveBtn');
+  stamp.classList.add('stamped');
+  stamp.innerHTML = '<span class="stamp-icon">✅</span>Stamped';
+  btn.disabled = false;
+  btn.style.animation = 'fsu .4s both';
+}
+
+function confirmApproval(){
+  const authBox     = document.getElementById('authBox');
+  const approvedState = document.getElementById('approvedState');
+  const timeEl      = document.getElementById('approvedTime');
+
+  const now = new Date().toLocaleString('en-IN',{timeZone:'Asia/Kolkata',
+    day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});
+  timeEl.textContent = 'Approved at: ' + now;
+
+  authBox.style.display = 'none';
+  approvedState.classList.add('show');
+
+  // Trigger confetti-like burst
+  burstParticles();
+}
+
+function burstParticles(){
+  const colors=['#38b6d8','#e8a020','#2a9d5c','#e080a0','#ffd56b'];
+  for(let i=0;i<30;i++){
+    const d=document.createElement('div');
+    const s=6+Math.random()*10;
+    const angle=Math.random()*360;
+    const dist=80+Math.random()*160;
+    d.style.cssText=`position:fixed;width:${s}px;height:${s}px;border-radius:50%;
+      background:${colors[i%colors.length]};left:50%;top:50%;z-index:999;
+      transform:translate(-50%,-50%);
+      animation:burst${i} .8s ease-out forwards;`;
+    const keyframes=`@keyframes burst${i}{
+      0%{transform:translate(-50%,-50%) scale(1);opacity:1;}
+      100%{transform:translate(calc(-50% + ${Math.cos(angle)*dist}px),calc(-50% + ${Math.sin(angle)*dist}px)) scale(0);opacity:0;}}`;
+    const style=document.createElement('style');
+    style.textContent=keyframes;
+    document.head.appendChild(style);
+    document.body.appendChild(d);
+    setTimeout(()=>{d.remove();style.remove();},900);
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>सर्वे भवन्तु सुखिनः | Arogyam Yog Chikitsa Kendra Sikar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Tiro+Devanagari+Sanskrit&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sky:#38b6d8; --sky-dark:#1a7fa0; --sky-light:#c8ecf7;
+      --cream:#fdf8f0; --gold:#e8a020; --lotus:#e080a0;
+      --text:#1a2830; --muted:#4a6878; --white:#ffffff;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    html,body{min-height:100vh;font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;}
+
+    .bg-canvas{position:fixed;inset:0;z-index:0;background:
+      radial-gradient(ellipse 70% 50% at 50% 0%,rgba(56,182,216,.22) 0%,transparent 60%),
+      radial-gradient(ellipse 50% 40% at 10% 100%,rgba(232,160,32,.13) 0%,transparent 55%),
+      radial-gradient(ellipse 60% 60% at 90% 80%,rgba(224,128,160,.1) 0%,transparent 60%),
+      linear-gradient(180deg,#edf9fd 0%,#fdf8f0 60%,#fdf3e8 100%);}
+
+    .particle{position:fixed;border-radius:50%;pointer-events:none;z-index:0;animation:floatP ease-in-out infinite;opacity:0;}
+    @keyframes floatP{0%{opacity:0;transform:translateY(0) scale(.5);}20%{opacity:.3;}80%{opacity:.15;}100%{opacity:0;transform:translateY(-130px) scale(1.3);}}
+
+    .page{position:relative;z-index:1;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:32px 20px;}
+    .card-wrap{width:min(660px,100%);display:flex;flex-direction:column;gap:18px;}
+
+    /* Header */
+    .header{text-align:center;animation:fsd .9s cubic-bezier(.2,.8,.3,1) both;}
+    .logo-ring{width:116px;height:116px;margin:0 auto 14px;animation:logoBreath 5s ease-in-out infinite;}
+    .logo-ring img{width:100%;height:100%;border-radius:50%;object-fit:cover;
+      box-shadow:0 0 0 3px rgba(56,182,216,.45),0 0 0 8px rgba(56,182,216,.12),0 10px 34px rgba(56,182,216,.32);}
+    @keyframes logoBreath{0%,100%{transform:scale(1);filter:drop-shadow(0 0 8px rgba(56,182,216,.4));}50%{transform:scale(1.05);filter:drop-shadow(0 0 20px rgba(56,182,216,.65));}}
+    .sanskrit{font-family:'Tiro Devanagari Sanskrit',serif;font-size:20px;color:var(--sky-dark);letter-spacing:.04em;margin-bottom:4px;}
+    .header h1{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,5vw,32px);font-weight:600;line-height:1.15;}
+    .sub-name{font-size:12px;font-weight:300;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-top:4px;}
+
+    /* Card */
+    .card{background:rgba(255,255,255,.9);backdrop-filter:blur(20px);border:1px solid rgba(56,182,216,.22);border-radius:24px;padding:30px 28px;
+      box-shadow:0 4px 6px rgba(26,40,48,.04),0 22px 55px rgba(26,40,48,.1);animation:fsu .8s .2s cubic-bezier(.2,.8,.3,1) both;}
+
+    /* Steps */
+    .steps{display:flex;align-items:center;gap:8px;margin-bottom:24px;}
+    .step-dot{width:9px;height:9px;border-radius:50%;background:var(--sky-light);border:2px solid rgba(56,182,216,.25);transition:all .4s;}
+    .step-dot.active{background:var(--sky-dark);border-color:var(--sky-dark);transform:scale(1.35);box-shadow:0 0 9px rgba(26,127,160,.5);}
+    .step-line{flex:1;height:1px;background:rgba(56,182,216,.25);}
+
+    .sec-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--sky-dark);margin-bottom:4px;}
+    .sec-sub{font-size:13px;color:var(--muted);margin-bottom:18px;line-height:1.5;}
+
+    /* Form */
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+    .form-group{display:flex;flex-direction:column;gap:5px;margin-bottom:14px;}
+    label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);}
+    input[type="text"],input[type="tel"]{width:100%;padding:13px 15px;border:1.5px solid rgba(56,182,216,.3);border-radius:12px;
+      font-family:'DM Sans',sans-serif;font-size:15px;background:rgba(237,249,253,.5);color:var(--text);outline:none;
+      transition:border-color .25s,box-shadow .25s,background .25s;}
+    input:focus{border-color:var(--sky);background:#fff;box-shadow:0 0 0 3px rgba(56,182,216,.16);}
+    input::placeholder{color:#9ab8c8;}
+    input.error{border-color:#e05040!important;box-shadow:0 0 0 3px rgba(224,80,64,.12)!important;}
+
+    .divider{display:flex;align-items:center;gap:12px;margin:18px 0;color:var(--muted);font-size:12px;letter-spacing:.08em;text-transform:uppercase;}
+    .divider::before,.divider::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(56,182,216,.4),transparent);}
+
+    /* Buttons */
+    .button-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;}
+    .btn{display:inline-flex;justify-content:center;align-items:center;gap:8px;width:100%;border:0;border-radius:14px;text-decoration:none;
+      padding:13px 14px;font-family:'DM Sans',sans-serif;font-size:13.5px;font-weight:500;cursor:pointer;
+      transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden;}
+    .btn:hover{transform:translateY(-2px);}
+    .btn-instagram{background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff;box-shadow:0 4px 16px rgba(220,39,67,.28);}
+    .btn-instagram:hover{box-shadow:0 8px 24px rgba(220,39,67,.4);}
+    .btn-google{background:#fff;color:#444;border:1.5px solid rgba(56,182,216,.3);box-shadow:0 2px 8px rgba(0,0,0,.05);}
+    .btn-google:hover{border-color:var(--sky);box-shadow:0 4px 14px rgba(56,182,216,.2);}
+
+    /* Checks */
+    .checks{display:flex;flex-direction:column;gap:9px;margin-bottom:18px;}
+    .check-item{display:flex;align-items:center;gap:12px;background:rgba(237,249,253,.55);border:1.5px solid rgba(56,182,216,.2);border-radius:12px;padding:12px 14px;cursor:pointer;transition:background .2s,border-color .2s;}
+    .check-item:has(input:checked){background:rgba(56,182,216,.08);border-color:var(--sky);}
+    .check-item input[type="checkbox"]{appearance:none;-webkit-appearance:none;width:20px;height:20px;border:2px solid var(--sky-light);border-radius:6px;flex-shrink:0;cursor:pointer;position:relative;transition:background .2s,border-color .2s;}
+    .check-item input:checked{background:var(--sky-dark);border-color:var(--sky-dark);}
+    .check-item input:checked::after{content:'✓';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700;}
+    .check-item span{font-size:14px;color:var(--text);}
+
+    .btn-continue{width:100%;padding:16px;background:linear-gradient(135deg,var(--sky-dark),var(--sky));color:#fff;border-radius:14px;
+      font-size:16px;font-weight:500;border:none;cursor:pointer;box-shadow:0 6px 22px rgba(26,127,160,.38);transition:all .3s;letter-spacing:.02em;font-family:'DM Sans',sans-serif;}
+    .btn-continue:disabled{background:linear-gradient(135deg,#a0c8d8,#b8dae6);box-shadow:none;cursor:not-allowed;opacity:.6;}
+    .btn-continue:not(:disabled):hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(26,127,160,.45);}
+
+    .note{text-align:center;font-size:12px;color:var(--muted);margin-top:13px;line-height:1.5;}
+
+    /* Success */
+    .success-msg{display:none;text-align:center;padding:16px 8px;}
+    .success-msg.show{display:block;animation:fsu .6s both;}
+    .success-icon{font-size:54px;margin-bottom:12px;animation:bounceIn .7s both;display:block;}
+    .success-msg h3{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--sky-dark);margin-bottom:8px;}
+    .success-msg .sq{font-family:'Tiro Devanagari Sanskrit',serif;font-size:17px;color:var(--gold);margin:12px 0 18px;}
+    .success-msg p{color:var(--muted);font-size:14px;line-height:1.6;}
+    .btn-goto{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:linear-gradient(135deg,var(--sky-dark),var(--sky));color:#fff;
+      border-radius:14px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;text-decoration:none;
+      box-shadow:0 6px 20px rgba(26,127,160,.35);transition:all .3s;margin-top:14px;}
+    .btn-goto:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(26,127,160,.45);}
+
+    .spinner{display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle;margin-right:6px;}
+
+    .ripple-container{position:relative;overflow:hidden;}
+    .ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,.35);transform:scale(0);animation:ripple .6s linear;pointer-events:none;}
+
+    @keyframes fsd{from{opacity:0;transform:translateY(-22px);}to{opacity:1;transform:translateY(0);}}
+    @keyframes fsu{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+    @keyframes bounceIn{0%{transform:scale(0) rotate(-15deg);}60%{transform:scale(1.2) rotate(5deg);}100%{transform:scale(1) rotate(0deg);}}
+    @keyframes ripple{to{transform:scale(5);opacity:0;}}
+    @keyframes spin{to{transform:rotate(360deg);}}
+
+    @media(max-width:520px){.button-grid,.form-row{grid-template-columns:1fr;}.card{padding:22px 18px;}}
+  </style>
+</head>
+<body>
+<div class="bg-canvas"></div>
+
+<main class="page">
+<div class="card-wrap">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="logo-ring">
+      <img src="Logo_Arogyam.png" alt="Arogyam Yog Logo" />
+    </div>
+    <div class="sanskrit">॥ सर्वे भवन्तु सुखिनः ॥</div>
+    <h1>Arogyam Yog Chikitsa Kendra</h1>
+    <p class="sub-name">Sikar, Rajasthan</p>
+  </div>
+
+  <!-- Card -->
+  <div class="card">
+    <div class="steps">
+      <div class="step-dot active" id="dot1"></div>
+      <div class="step-line"></div>
+      <div class="step-dot" id="dot2"></div>
+      <div class="step-line"></div>
+      <div class="step-dot" id="dot3"></div>
+    </div>
+
+    <div id="formSection">
+      <p class="sec-title">🙏 Your Details</p>
+      <p class="sec-sub">Please fill in your name and phone number to proceed.</p>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="userName">Your Name</label>
+          <input type="text" id="userName" placeholder="Priya Sharma" autocomplete="name" />
+        </div>
+        <div class="form-group">
+          <label for="userPhone">Phone Number</label>
+          <input type="tel" id="userPhone" placeholder="+91 98765 43210" autocomplete="tel" />
+        </div>
+      </div>
+
+      <div class="divider">then complete</div>
+
+      <p class="sec-title">📲 Follow + Review</p>
+      <p class="sec-sub">Complete both actions to unlock your discount.</p>
+
+      <div class="button-grid">
+        <a class="btn btn-instagram ripple-container"
+           href="https://www.instagram.com/arogyamyogasikar/?hl=en" target="_blank" rel="noopener">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none">
+            <rect x="2" y="2" width="20" height="20" rx="6" stroke="white" stroke-width="1.8"/>
+            <circle cx="12" cy="12" r="4.5" stroke="white" stroke-width="1.8"/>
+            <circle cx="17.5" cy="6.5" r="1.2" fill="white"/>
+          </svg>
+          Follow on Instagram
+        </a>
+        <a class="btn btn-google ripple-container"
+           href="https://share.google/5bQwZY6gpG0tEnRzq" target="_blank" rel="noopener">
+          <svg width="17" height="17" viewBox="0 0 24 24">
+            <path d="M21.8 10.2H12v3.8h5.7C17 16 14.9 17.4 12 17.4c-3 0-5.4-2.4-5.4-5.4s2.4-5.4 5.4-5.4c1.4 0 2.6.5 3.6 1.3l2.7-2.7C16.7 3.7 14.5 3 12 3 7 3 3 7 3 12s4 9 9 9c5.2 0 8.7-3.6 8.7-8.7 0-.6-.1-1.4-.2-2.1z" fill="#4285F4"/>
+          </svg>
+          Review on Google
+        </a>
+      </div>
+
+      <div class="checks">
+        <label class="check-item">
+          <input id="doneInstagram" type="checkbox" />
+          <span>✨ I followed on Instagram</span>
+        </label>
+        <label class="check-item">
+          <input id="doneReview" type="checkbox" />
+          <span>⭐ I reviewed on Google Maps</span>
+        </label>
+      </div>
+
+      <button id="continueBtn" class="btn-continue" type="button" disabled>
+        Continue to Discount →
+      </button>
+      <p class="note">🌿 Your details are saved securely. Show next page at the counter for your discount.</p>
+    </div>
+
+    <!-- Success -->
+    <div class="success-msg" id="successSection">
+      <span class="success-icon">🌟</span>
+      <h3>Namaste! You're all set.</h3>
+      <p class="sq">सर्वे भवन्तु सुखिनः</p>
+      <p>Your details have been saved.<br>Please show the discount page at the counter.</p>
+      <a href="discount.html" class="btn-goto">View Discount Page →</a>
+    </div>
+  </div>
+
+</div>
+</main>
+
+<script>
+(function(){
+  const SHEET_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
+
+  const doneInstagram  = document.getElementById('doneInstagram');
+  const doneReview     = document.getElementById('doneReview');
+  const continueBtn    = document.getElementById('continueBtn');
+  const userName       = document.getElementById('userName');
+  const userPhone      = document.getElementById('userPhone');
+  const formSection    = document.getElementById('formSection');
+  const successSection = document.getElementById('successSection');
+  const dot2 = document.getElementById('dot2');
+  const dot3 = document.getElementById('dot3');
+
+  // Particles
+  const colors=['#38b6d8','#e8a020','#e080a0','#7ac8a0','#c8ecf7'];
+  for(let i=0;i<20;i++){
+    const p=document.createElement('div');
+    p.className='particle';
+    const s=5+Math.random()*14;
+    p.style.cssText=`width:${s}px;height:${s}px;background:${colors[i%colors.length]};left:${Math.random()*100}%;bottom:${Math.random()*40}%;animation-duration:${7+Math.random()*10}s;animation-delay:${Math.random()*9}s;`;
+    document.body.appendChild(p);
+  }
+
+  function refresh(){
+    const ok=doneInstagram.checked&&doneReview.checked&&userName.value.trim().length>1&&userPhone.value.trim().length>5;
+    continueBtn.disabled=!ok;
+    if(userName.value.trim()||userPhone.value.trim()) dot2.classList.add('active');
+    if(doneInstagram.checked&&doneReview.checked) dot3.classList.add('active');
+  }
+  [doneInstagram,doneReview,userName,userPhone].forEach(el=>el.addEventListener(el.type==='checkbox'?'change':'input',refresh));
+
+  // Ripple
+  document.querySelectorAll('.ripple-container').forEach(btn=>{
+    btn.addEventListener('click',function(e){
+      const r=document.createElement('span');r.className='ripple';
+      const rect=btn.getBoundingClientRect(),sz=Math.max(rect.width,rect.height);
+      r.style.cssText=`width:${sz}px;height:${sz}px;left:${e.clientX-rect.left-sz/2}px;top:${e.clientY-rect.top-sz/2}px;`;
+      btn.appendChild(r);setTimeout(()=>r.remove(),700);
+    });
+  });
+
+  continueBtn.addEventListener('click',async()=>{
+    const name=userName.value.trim(),phone=userPhone.value.trim();
+    userName.classList.toggle('error',!name);
+    userPhone.classList.toggle('error',!phone);
+    if(!name||!phone)return;
+
+    continueBtn.innerHTML='<span class="spinner"></span> Saving...';
+    continueBtn.disabled=true;
+
+    try{
+      await fetch(SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({name,phone,timestamp:new Date().toLocaleString('en-IN',{timeZone:'Asia/Kolkata'}),followedInstagram:doneInstagram.checked,reviewedGoogle:doneReview.checked})});
+    }catch(e){console.warn(e);}
+
+    formSection.style.display='none';
+    successSection.classList.add('show');
+    ['dot1','dot2','dot3'].forEach(id=>document.getElementById(id).classList.add('active'));
+  });
+
+  refresh();
+})();
+</script>
+</body>
+</html>
