@@ -1,6 +1,13 @@
-// Google Apps Script File
-// Created on: 2026-02-23 20:21:23 UTC
+function onFormSubmit(e) {
+    const sheet = SpreadsheetApp.openById('YOUR_SHEET_ID').getActiveSheet();
+    const data = e.values;
+    sheet.appendRow(data);
+}
 
-function myFunction() {
-  Logger.log('Hello, world!');
+function setupTrigger() {
+    const form = FormApp.openById('YOUR_FORM_ID');
+    ScriptApp.newTrigger('onFormSubmit')
+        .forForm(form)
+        .onFormSubmit()
+        .create();
 }
